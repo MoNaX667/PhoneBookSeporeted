@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleModule", "ConsoleApplication1\ConsoleModule.csproj", "{665ECBD6-24D2-4E92-8D57-6C3A007CC793}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneBookCore", "PhoneBookCore\PhoneBookCore.csproj", "{2735A333-A838-4577-8BCA-ED55CFA1EE89}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebModule", "WebModule\WebModule.csproj", "{4CBF1864-9A52-4E5F-8F81-244D9281B15E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{665ECBD6-24D2-4E92-8D57-6C3A007CC793}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{665ECBD6-24D2-4E92-8D57-6C3A007CC793}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{665ECBD6-24D2-4E92-8D57-6C3A007CC793}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{665ECBD6-24D2-4E92-8D57-6C3A007CC793}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2735A333-A838-4577-8BCA-ED55CFA1EE89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2735A333-A838-4577-8BCA-ED55CFA1EE89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2735A333-A838-4577-8BCA-ED55CFA1EE89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2735A333-A838-4577-8BCA-ED55CFA1EE89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CBF1864-9A52-4E5F-8F81-244D9281B15E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CBF1864-9A52-4E5F-8F81-244D9281B15E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CBF1864-9A52-4E5F-8F81-244D9281B15E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CBF1864-9A52-4E5F-8F81-244D9281B15E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
