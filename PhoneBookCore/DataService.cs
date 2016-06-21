@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PhoneBookCore
+﻿namespace PhoneBookCore
 {
+    using System.Collections.Generic;
+    using System.Linq;
+
+    /// <summary>
+    /// Data core of application
+    /// </summary>
     public class DataService
     {
         /// <summary>
@@ -14,7 +14,7 @@ namespace PhoneBookCore
         /// <param name="targetPerson">New person</param>
         public void Add(Person targetPerson)
         {
-            MyDataModel db=new MyDataModel();
+            MyDataModel db = new MyDataModel();
             db.Persons.Add(targetPerson);
             db.SaveChanges();
         }
@@ -26,11 +26,11 @@ namespace PhoneBookCore
         public IEnumerable<Person> GetPersonList()
         {
             MyDataModel db = new MyDataModel();
-            return db.Persons.ToList();
+            return db.Persons;
         }
 
         /// <summary>
-        /// Remove some person from teble
+        /// Remove some person from table
         /// </summary>
         /// <param name="targetId">Id of target person</param>
         public void Remove(int targetId)
@@ -70,6 +70,33 @@ namespace PhoneBookCore
         {
             MyDataModel db = new MyDataModel();
             return db.Persons.ToList().Count;
+        }
+
+        /// <summary>
+        /// Get target person by Id
+        /// </summary>
+        /// <param name="id">Target id</param>
+        /// <returns>Some person</returns>
+        public Person GetPerson(int id)
+        {
+            var db = new MyDataModel();
+            var q = db.Persons.Single(targetPerson => targetPerson.Id == id);
+            return q;
+        }
+
+        /// <summary>
+        /// Update status of person
+        /// </summary>
+        /// <param name="id">Target id</param>
+        /// <param name="person">New person</param>
+        public void UpdatePerson(int id, Person newPerson)
+        {
+            var db = new MyDataModel();
+            var operson = db.Persons.Single(targetPerson => targetPerson.Id == id);
+            operson.Name = newPerson.Name;
+            operson.PhoneNumber = newPerson.PhoneNumber;
+
+            db.SaveChanges();
         }
     }
 }
