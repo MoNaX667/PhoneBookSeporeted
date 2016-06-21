@@ -157,7 +157,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\PhoneBookController.cs" />
+    <Compile Include="Controllers\PhoneBookController.cs">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -208,6 +210,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\PhoneBook\Index.cshtml" />
     <Content Include="Views\PhoneBook\Create.cshtml" />
+    <Content Include="Views\PhoneBook\Details.cshtml" />
+    <Content Include="Views\PhoneBook\Edit.cshtml" />
+    <Content Include="Views\PhoneBook\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

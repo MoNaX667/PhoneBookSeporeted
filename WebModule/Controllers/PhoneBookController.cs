@@ -1,7 +1,4 @@
-﻿/// <summary>
-/// View of contact list
-/// </summary>
-namespace WebModule.Controllers
+﻿namespace WebModule.Controllers
 {
     using PhoneBookCore;
     using System.Linq;
@@ -22,6 +19,7 @@ namespace WebModule.Controllers
         public ActionResult Index()
         {
             var service = new DataService();
+
             return this.View(
                 service.GetPersonList().ToList().Select(selectedPerson =>
                 new ContactView
@@ -33,11 +31,19 @@ namespace WebModule.Controllers
         }
 
         // GET: PhoneBook/Details/5
+
+        /// <summary>
+        /// Detail get method
+        /// </summary>
+        /// <param name="id">target id</param>
+        /// <returns>return some action</returns>
         public ActionResult Details(int id)
         {
             var service = new DataService();
             var person = service.GetPerson(id);
-            return View(new ContactView()
+
+            return this.View(
+                new ContactView()
             {
                 Name = person.Name,
                 PhoneNumber = person.PhoneNumber,
@@ -46,28 +52,36 @@ namespace WebModule.Controllers
         }
 
         // GET: PhoneBook/Create
+
+        /// <summary>
+        /// Create some person
+        /// </summary>
+        /// <returns>Return create action</returns>
         public ActionResult Create()
         {
             return this.View();
         }
 
         // POST: PhoneBook/Create
+
+        /// <summary>
+        /// Create Post action
+        /// </summary>
+        /// <param name="contactView"></param>
+        /// <returns>Do create action</returns>
         [HttpPost]
         public ActionResult Create(ContactView contactView)
         {
             try
             {
-                // TODO: Add insert logic here
                 if (ModelState.IsValid)
                 {
                     var service = new DataService();
                     service.Add(new Person { Name = contactView.Name, PhoneNumber = contactView.PhoneNumber });
-                    return RedirectToAction("Index");
+                    return this.RedirectToAction("Index");
                 }
 
-                return View();
-
-                return RedirectToAction("Index");
+                return this.View();
             }
             catch
             {
@@ -78,18 +92,41 @@ namespace WebModule.Controllers
         // GET: PhoneBook/Edit/5
         public ActionResult Edit(int id)
         {
-            return this.View();
+            var service = new DataService();
+            var person = service.GetPerson(id);
+
+            return this.View(new Person
+            {
+                Name = person.Name,
+                PhoneNumber = person.PhoneNumber,
+                Id = person.Id
+            });
         }
 
         // POST: PhoneBook/Edit/5
+
+        /// <summary>
+        /// Post some edit action
+        /// </summary>
+        /// <param name="id">target id</param>
+        /// <param name="targetPerson">new values</param>
+        /// <returns>Do edit action</returns>
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, Person targetPerson)
         {
             try
             {
-                // TODO: Add update logic here
+                if (ModelState.IsValid)
+                {
+                    var service = new DataService();
+                    service.UpdatePerson(
+                        id,
+                        new Person { Name = targetPerson.Name, PhoneNumber = targetPerson.PhoneNumber, });
 
-                return RedirectToAction("Index");
+                    return this.RedirectToAction("Index");
+                }
+
+                return this.View();
             }
             catch
             {
@@ -98,20 +135,42 @@ namespace WebModule.Controllers
         }
 
         // GET: PhoneBook/Delete/5
+
+        /// <summary>
+        /// Post delete action
+        /// </summary>
+        /// <param name="id">target id</param>
+        /// <returns>get some action</returns>
         public ActionResult Delete(int id)
         {
-            return this.View();
+            var service = new DataService();
+            var person = service.GetPerson(id);
+
+            return this.View(new Person
+            {
+                Name = person.Name,
+                PhoneNumber = person.PhoneNumber,
+                Id = person.Id
+            });
         }
 
         // POST: PhoneBook/Delete/5
+
+        /// <summary>
+        /// Do delete action
+        /// </summary>
+        /// <param name="id">target id</param>
+        /// <param name="targetPerson">new values</param>
+        /// <returns></returns>
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, Person targetPerson)
         {
             try
             {
-                // TODO: Add delete logic here
+                var service = new DataService();
+                service.Remove(id);
 
-                return RedirectToAction("Index");
+                return this.RedirectToAction("Index");
             }
             catch
             {
