@@ -26,7 +26,7 @@ namespace PhoneBookCore
         public IEnumerable<Person> GetPersonList()
         {
             MyDataModel db = new MyDataModel();
-            return db.Persons.ToList();
+            return db.Persons;
         }
 
         /// <summary>
@@ -70,6 +70,13 @@ namespace PhoneBookCore
         {
             MyDataModel db = new MyDataModel();
             return db.Persons.ToList().Count;
+        }
+
+        public Person GetPerson(int id)
+        {
+            var db = new MyDataModel();
+            var q = db.Persons.Include("Persons").Single(p => p.Id == id);
+            return q;
         }
     }
 }
